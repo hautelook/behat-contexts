@@ -31,7 +31,7 @@ class JsonContext extends RawMinkContext
      */
     public function theNodeXShouldBeBoolean($path, $expectedValue)
     {
-        $expectedValue = (boolean) $expectedValue;
+        $expectedValue = filter_var($expectedValue, FILTER_VALIDATE_BOOLEAN);
 
         \PHPUnit_Framework_Assert::assertEquals(
             $expectedValue,
