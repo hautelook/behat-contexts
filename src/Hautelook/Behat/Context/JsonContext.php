@@ -62,6 +62,17 @@ class JsonContext extends RawMinkContext
     }
 
     /**
+     * @Then /^the JSON node (\[.+\]) should not contain "([^"]+)"$/
+     */
+    public function theNodeXShouldNotContainX($path, $expectedValue)
+    {
+        \PHPUnit_Framework_Assert::assertNotContains(
+            $expectedValue,
+            JsonUtil::getJsonPath($this, $path)
+        );
+    }
+
+    /**
      * @Then /^the JSON node (\[.+\]) should contain (\d+) elements?$/
      */
     public function theNodeXShouldContainXElements($path, $expectedValue)
