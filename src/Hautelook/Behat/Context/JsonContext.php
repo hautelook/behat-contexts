@@ -112,6 +112,32 @@ class JsonContext extends RawMinkContext
     }
 
     /**
+     * @Then /^the JSON node (\[.+\]) should not contain the following objects:$/
+     */
+    public function theNodeXShouldNotContainTheFollowingObjects($path, TableNode $table)
+    {
+        $firstNode = JsonUtil::getJsonPath($this, $path);
+
+        foreach ($table->getHash() as $properties) {
+            foreach ($firstNode as $childNode) {
+                foreach ($properties as $propertyPath => $expectedValue) {
+                    if ($expectedValue != JsonUtil::getArrayPath($childNode, $propertyPath)) {
+                        continue 2;
+                    }
+                }
+
+                throw new \Exception(
+                    sprintf(
+                        'The JSON node "%s" contains the following object: %s.',
+                        $path,
+                        json_encode($properties)
+                    )
+                );
+            }
+        }
+    }
+
+    /**
      * @Then /^the JSON node (\[.+\]) should contain the following ordered objects:$/
      */
     public function theNodeXShouldContainTheFollowingOrderedObjects($path, TableNode $table)
