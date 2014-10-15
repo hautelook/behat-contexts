@@ -71,6 +71,7 @@ class HalContext extends RawMinkContext
     public function iFollowTheXLink($rel)
     {
         $href = JsonUtil::getJsonPath($this, sprintf('[\'_links\'][\'%s\'][\'href\']', $rel));
+        $href = (new UriTemplate())->expand($href, []); // in case that's a template, expand with no parameters
 
         return array(
             new Then(sprintf('I go to "%s"', $href)),
