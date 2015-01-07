@@ -138,6 +138,14 @@ class JsonContext extends RawMinkContext
     }
 
     /**
+     * @Then /^the root JSON node should contain the following objects:$/
+     */
+    public function theRootNodeShouldContainTheFollowingObjects(TableNode $table)
+    {
+        $this->theNodeXShouldContainTheFollowingObjects('', $table);
+    }
+
+    /**
      * @Then /^the JSON node (\[.+\]) should contain the following ordered objects:$/
      */
     public function theNodeXShouldContainTheFollowingOrderedObjects($path, TableNode $table)
