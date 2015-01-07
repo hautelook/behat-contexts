@@ -39,8 +39,10 @@ class JsonUtil
 
     public static function getArrayPath(array $array, $path)
     {
-        if (!preg_match('/^\[/', $path)) {
-            throw new \InvalidArgumentException(sprintf('The path should start with a "[", the path was "%s"', $path));
+        if (!empty($path) && !preg_match('/^\[/', $path)) {
+            throw new \InvalidArgumentException(
+                sprintf('The path should either be blank or start with a "[", the path was "%s"', $path)
+            );
         }
 
         $expression = sprintf('data%s', $path);
