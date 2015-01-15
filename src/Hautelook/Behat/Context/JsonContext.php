@@ -19,7 +19,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[[^"]+\]) should exist$/
+     * @Then /^the JSON node ?(.*) should exist$/
      */
     public function theNodeXShouldExist($path)
     {
@@ -27,7 +27,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should be (true|false)$/
+     * @Then /^the JSON node ?(.*) should be (true|false)$/
      */
     public function theNodeXShouldBeBoolean($path, $expectedValue)
     {
@@ -40,7 +40,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should be equal to "([^"]+)"$/
+     * @Then /^the JSON node ?(.*) should be equal to "([^"]+)"$/
      */
     public function theNodeXShouldBeEqualToX($path, $expectedValue)
     {
@@ -51,7 +51,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should contain "([^"]+)"$/
+     * @Then /^the JSON node ?(.*) should contain "([^"]+)"$/
      */
     public function theNodeXShouldContainX($path, $expectedValue)
     {
@@ -62,7 +62,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should not contain "([^"]+)"$/
+     * @Then /^the JSON node ?(.*) should not contain "([^"]+)"$/
      */
     public function theNodeXShouldNotContainX($path, $expectedValue)
     {
@@ -73,7 +73,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should contain (\d+) elements?$/
+     * @Then /^the JSON node ?(.*) should contain (\d+) elements?$/
      */
     public function theNodeXShouldContainXElements($path, $expectedValue)
     {
@@ -84,7 +84,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should contain the following objects:$/
+     * @Then /^the JSON node ?(.*) should contain the following objects:$/
      */
     public function theNodeXShouldContainTheFollowingObjects($path, TableNode $table)
     {
@@ -112,7 +112,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should not contain the following objects:$/
+     * @Then /^the JSON node ?(.*) should not contain the following objects:$/
      */
     public function theNodeXShouldNotContainTheFollowingObjects($path, TableNode $table)
     {
@@ -138,7 +138,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should contain the following ordered objects:$/
+     * @Then /^the JSON node ?(.*) should contain the following ordered objects:$/
      */
     public function theNodeXShouldContainTheFollowingOrderedObjects($path, TableNode $table)
     {
@@ -163,7 +163,7 @@ class JsonContext extends RawMinkContext
     }
 
     /**
-     * @Then /^the JSON node (\[.+\]) should match:$/
+     * @Then /^the JSON node ?(.*) should match:$/
      */
     public function theNodeXShouldMatch($path, TableNode $table)
     {
