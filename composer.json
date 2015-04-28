@@ -3,8 +3,8 @@
     "description": "Hautelook behat contexts",
     "license": "MIT",
     "require": {
-        "php": ">=5.4",
-        "behat/behat": "~2.4",
+        "php": ">=5.3",
+        "behat/behat": ">=2.4",
         "behat/mink": "*",
         "behat/mink-extension": "*",
         "symfony/expression-language": "~2.4"
