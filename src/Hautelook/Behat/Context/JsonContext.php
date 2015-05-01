@@ -169,7 +169,8 @@ class JsonContext extends RawMinkContext
     {
         $node = JsonUtil::getJsonPath($this, $path);
 
-        $properties = $table->getHash()[0];
+        $tableHash = $table->getHash();
+        $properties = $tableHash[0];
         foreach ($properties as $propertyPath => $expectedValue) {
             if ($expectedValue != JsonUtil::getArrayPath($node, $propertyPath)) {
                 throw new \Exception(
