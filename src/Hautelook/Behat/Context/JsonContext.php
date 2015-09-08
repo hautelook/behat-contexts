@@ -40,6 +40,14 @@ class JsonContext extends RawMinkContext
     }
 
     /**
+     * @Then /^the JSON node ?(.*) should be null$/
+     */
+    public function theNodeXShouldBeNull($path)
+    {
+        \PHPUnit_Framework_Assert::assertNull(JsonUtil::getJsonPath($this, $path));
+    }
+
+    /**
      * @Then /^the JSON node ?(.*) should be equal to "([^"]+)"$/
      */
     public function theNodeXShouldBeEqualToX($path, $expectedValue)
