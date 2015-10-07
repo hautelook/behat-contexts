@@ -4,6 +4,7 @@ namespace Hautelook\Behat\Context;
 
 use Behat\Behat\Context\Step\Then;
 use Behat\Behat\Context\Step\When;
+use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Guzzle\Parser\UriTemplate\UriTemplate;
@@ -113,6 +114,44 @@ class HalContext extends RawMinkContext
 
         return array(
             new When(sprintf('I go to "%s"', $href)),
+        );
+    }
+
+
+
+    /**
+     * @When /^I follow the "([^"]+)" HAL link in ([^"]+)$/
+     */
+    public function iFollowTheXLinkInX($rel, $path)
+    {
+        $href = JsonUtil::getJsonPath($this, sprintf('%s[\'_links\'][\'%s\'][\'href\']', $path, $rel));
+
+        return array(
+            new Then(sprintf('I go to "%s"', $href)),
+        );
+    }
+
+    /**
+     * @When /^I send a (\S+) request to the "([^"]+)" HAL link in ([^"]+)$/
+     */
+    public function iSendAXRequestToTheXHALLinkInX($method, $rel, $path)
+    {
+        $href = JsonUtil::getJsonPath($this, sprintf('%s[\'_links\'][\'%s\'][\'href\']', $path, $rel));
+
+        return array(
+            new Then(sprintf('I send a %s request on "%s"', $method, $href)),
+        );
+    }
+
+    /**
+     * @When /^I send a (\S+) request to the "([^"]+)" HAL link with json body:$/
+     */
+    public function iSendAXRequestToTheXHALLinkWithJsonBody($method, $rel, PyStringNode $jsonBody)
+    {
+        $href = JsonUtil::getJsonPath($this, sprintf('[\'_links\'][\'%s\'][\'href\']', $rel));
+
+        return array(
+            new Then(sprintf('I send a %s request on "%s" with json body:', $method, $href), $jsonBody),
         );
     }
 }
